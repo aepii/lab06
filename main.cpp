@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 
-// Initializes a square matrix with given size with zeros.
+// Function to initialize a square matrix with zeros.
 int** initMatrix(int size){
     int** matrix = new int*[size];
     for (int i = 0; i < size; i++){
@@ -13,6 +13,7 @@ int** initMatrix(int size){
     return matrix;
 }
 
+// Function to deallocate the memory of a matrix.
 void freeMatrix(int** matrix, int size){
     for (int i = 0; i < size; i++){
         delete[] matrix[i];
@@ -20,6 +21,7 @@ void freeMatrix(int** matrix, int size){
     delete[] matrix;
 }
 
+// Function to print out a matrix.
 void printMatrix(int** matrix, int size){
     for(int i = 0; i < size; i++){
         for(int j = 0; j < size; j++){
@@ -29,6 +31,7 @@ void printMatrix(int** matrix, int size){
     }
 }
 
+// Function that reads a file and populates the matrix with elements retrieved from a file.
 void populateMatrix(std::ifstream& infile, int** matrix, int size){
     for (int i = 0; i < size; i++){
         for (int j = 0; j < size; j++){
@@ -42,6 +45,8 @@ void populateMatrix(std::ifstream& infile, int** matrix, int size){
     }
 }
 
+
+// Function that calculates the sum of two matrices. Returns a matrix.
 int** matrixSum(int** matrix1, int** matrix2, int size){
     int** matrix = initMatrix(size);
     for(int i = 0; i < size; i++){
@@ -52,6 +57,7 @@ int** matrixSum(int** matrix1, int** matrix2, int size){
     return matrix;
 }
 
+// Function that calculates the product of two matrices. Returns a matrix.
 int** matrixProduct(int** matrix1, int** matrix2, int size){
     int** matrix = initMatrix(size);
     for(int i = 0; i < size; i++){
@@ -64,6 +70,7 @@ int** matrixProduct(int** matrix1, int** matrix2, int size){
     return matrix;
 }
 
+// Function that calculates the difference of two matrices. Returns a matrix.
 int** matrixDifference(int** matrix1, int** matrix2, int size){
     int** matrix = initMatrix(size);
     for(int i = 0; i < size; i++){
@@ -74,6 +81,7 @@ int** matrixDifference(int** matrix1, int** matrix2, int size){
     return matrix;
 }
 
+// Function that returns the max element of a matrix.
 int getMaxElement(int** matrix, int size) {
     int maxElement = matrix[0][0]; 
     for (int i = 0; i < size; i++) {
@@ -86,6 +94,7 @@ int getMaxElement(int** matrix, int size) {
     return maxElement;
 }
 
+// Function that updates an element of a matrix with provided indices.
 void updateElement(int** matrix, int size, int row, int col, int value) {
     if (row >= size || col >= size) {
         std::cerr << "Out of bounds.";
@@ -95,6 +104,7 @@ void updateElement(int** matrix, int size, int row, int col, int value) {
     matrix[row][col] = value;
 }
 
+// Function that transposes a matrix in-place.
 void transposeMatrix(int** matrix, int size) {
     for (int i = 0; i < size; i++) {
         for (int j = i + 1; j < size; j++) {
@@ -105,6 +115,7 @@ void transposeMatrix(int** matrix, int size) {
     }
 }
 
+// Main entry point of program.
 int main() {
     std::ifstream infile("matrix_input.txt");
 
